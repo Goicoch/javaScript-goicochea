@@ -1,17 +1,6 @@
 
-
-/*let nombreIngresado   = prompt("Ingresar nombre");
-let apellidoIngresado = prompt("Ingresar apellido");
-
-if((nombreIngresado !="") && (apellidoIngresado !="")){
-    alert( nombreIngresado +" "+ apellidoIngresado); 
-}else{
-    alert("Error: Ingresar nombre y apellido");
-}*/
-
-
-
-/*let nombre = prompt("escribi tu nombre");
+/* ERROR SI NO COMPLETAS
+let nombre = prompt("escribi tu nombre");
 let edad = prompt("escribi tu edad")
 
 if((nombre !="") && (edad !="")){
@@ -20,11 +9,20 @@ if((nombre !="") && (edad !="")){
     alert("Error: Ingresar nombre y edad");
 }*/
 
-alert ("el numero ingresado se multiplicara del 1 al 10" );
+/* MULTIPLICADOR
+alert ("El 1er numero se multiplicara por el 2do" );
 let ingresarNumero = parseInt(prompt("Ingresar Numero"));
 
-for (let i = parseInt(prompt("Ingresar Numero")); i <= 10; i++) {
+for (let i = parseInt(prompt("Ingresar Numero")); i >= 0; ) {
     let resultado = ingresarNumero * i ;
-alert(ingresarNumero +" X "+ i +" = "+ resultado);
-}
+console.log(ingresarNumero +" X "+ i +" = "+ resultado);
+}*/
 
+alert("Se mostraran los numeros impares hasta 99")
+for (let i = 0; i < 100; i++) {
+
+    if (i % 2) {
+      alert( i );
+    }
+  
+  }
