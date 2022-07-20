@@ -18,9 +18,9 @@ for (let i = 0; i < 100; i++) {
   }
 }
 numerosImpares()
-*/
 
 
+ 
 function promedioDeEdad(){
   let sumaEdades = 0;
   for (let i = 1; i <6 ; i++){
@@ -33,8 +33,14 @@ function promedioDeEdad(){
 
   promedioDeEdad();
 
+*/
 
+  const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
+  const autores = ["miguelCervantes", "marquesDeSade", "GOETHE", "janeAusten", "victorHugo"];
 
+ 
+console.log(autores.length); 
 
-
-
+autores.push('edgarAllanPoe');
+console.log(autores.length); 
+console.log(genero); 
