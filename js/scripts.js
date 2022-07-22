@@ -33,7 +33,7 @@ function promedioDeEdad(){
 
   promedioDeEdad();
 
-//
+*/
 
   const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
   const autores = ["miguelCervantes", "marquesDeSade", "GOETHE", "janeAusten", "victorHugo"];
@@ -44,13 +44,12 @@ console.log(autores.length);
 autores.push('edgarAllanPoe');
 console.log(autores.length); 
 console.log(genero); 
-*/
-/*
+
 const libro1=[{nombre:"cien años de soledad", autor:"gabriel garcia marquez", stock: 2, precio:1000}];
 const libro2=[{nombre:"el cuervo", autor:"edgar allan poe", stock: 3, precio:1500}];
 const libro3=[{nombre:"borges cuentos", autor:"jorge luis borges", stock: 5, precio:1200}];
 const libro4=[{nombre:"rayuela", autor:"julio cortazar", stock: 3, precio:1100}];
-*/
+
 
  const carrito=[];
 
