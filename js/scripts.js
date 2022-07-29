@@ -33,50 +33,84 @@ function promedioDeEdad(){
 
   promedioDeEdad();
 
-*/
+
 
   const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
   const autores = ["miguelCervantes", "marquesDeSade", "GOETHE", "janeAusten", "victorHugo"];
 
  
+
 console.log(autores.length); 
 
 autores.push('edgarAllanPoe');
 console.log(autores.length); 
 console.log(genero); 
-
-const libro1=[{nombre:"cien años de soledad", autor:"gabriel garcia marquez", stock: 2, precio:1000}];
-const libro2=[{nombre:"el cuervo", autor:"edgar allan poe", stock: 3, precio:1500}];
-const libro3=[{nombre:"borges cuentos", autor:"jorge luis borges", stock: 5, precio:1200}];
-const libro4=[{nombre:"rayuela", autor:"julio cortazar", stock: 3, precio:1100}];
+*/
 
 
- const carrito=[];
+const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
+const autores = ["Edgar Allan Poe", "Antony Burgess", "Alejandro Casona", "J.K Rowling", "J.R.R Tolkien"];
+const libros = [
+  {"id":001, "name":"Harry Potter","imagen":"harry potter.jpg", "price":3200, "autor":"J.K Rowling", "stock":0},
+  {"id":002, "name":"El señor de los anillos","imagen":"lordOfTheRings.png","price":4500, "autor":"J.R.R Tolkien", "stock":0},
+  {"id":003, "name":"Juegos del hambre", "price":5000, "imagen":"JDH.webp","autor":"Suzzanne Collins", "stock":0},
+  {"id":004, "name":"Animales fantasticos", "price":5000,"imagen":"animales fantasticos.jpeg", "autor":"J.K Rowling", "stock":5},
+  {"id":005, "name":"El gato negro", "price":3500,"imagen":"el gato negro.jpg", "autor":"Edgar Allan Poe", "stock":12},
+  {"id":006, "name":"El hobbit", "price":4500,"imagen":"el hobbit.jpg", "autor":"J.R.R Tolkien", "stock":17},
+  {"id":007, "name":"La naranja mecanica", "price":3900,"imagen":"la naranja portada.jpg", "autor":"Antony Burgess", "stock":20},
+  {"id":8, "name":"Prohibido suicidarse en primavera", "price":6000,"imagen":"prohibido suicidarse en primavera.jpg", "autor":"Alejandro Casona", "stock":15}
+] ;
+const carrito =[];
 
  function sumarAlCarro(libros) {
   carrito.push(libros);
   console.log(carrito);
 }
 
-sumarAlCarro({id:001, nombre:"cien años de soledad", autor:"gabriel garcia marquez", precio: 1000});
-sumarAlCarro({id:002, nombre:"el cuervo", autor:"edgar allan poe", precio: 1500});
-sumarAlCarro({id:003, nombre:"borges cuentos", autor:"jorge luis borges", precio: 1200});
-sumarAlCarro({id:004, nombre:"rayuela", autor:"julio cortazar", precio:1100});
 
-function quitarDelCarro(nombreLibro) {
+function quitarDelCarro(nameLibro) {
   const index = carrito.findIndex(
     function (libro) {
-    return libro.nombre===nombreLibro});
+    return libro.name===nameLibro});
     if (index !== -1) {
       carrito.splice(index, 1);
     }
     
     
-    console.log(carrito);
+    
 }
 
-quitarDelCarro("el cuervo");
 
+
+libros.forEach((libro) => {
+  const idButton = `add-cart${libro.id}`; 
+  document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
+                            
+  <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
+  
+  <div class="card-body p-4">
+      <div class="text-center">
+          
+          <h5 class="fw-bolder"> nombre:${libro.name}</h5>
+          
+          $${libro.price}
+      </div>
+  </div>
+  
+  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+      <div class="text-center"><a id="${idButton}" onclick="sumarAlCarro()" class="btn btn-outline-dark mt-auto">Agregar al Carrito</a></div>
+  </div>
+</div>       
+</div>`;
+})
+
+libros.forEach((libro) => {
+  const idButton = `add-cart${libro.id}` 
+  document.getElementById(idButton).addEventListener('click', () => {
+      alert("hola seleccionaste: " +  libro.name + " $" + libro.price) ;   
+  })
+  
+});
 
 
 
