@@ -65,28 +65,45 @@ const libros = [
 ] ;
 const carrito =[];
 
- function sumarAlCarro(libros) {
-  carrito.push(libros);
-  console.log(carrito);
+ function sumarAlCarro(idLibro) {
+  const index= libros.findIndex(
+    function (libro){
+      return libro.id===idLibro;
+    }
+  );
+  if (index!== -1){
+    carrito.push(libros[index]);
+    estadoCarrito();
+    console.log(carrito); 
+  }
 }
 
 
-function quitarDelCarro(nameLibro) {
+function quitarDelCarro(idLibro) {
   const index = carrito.findIndex(
     function (libro) {
-    return libro.name===nameLibro});
-    if (index !== -1) {
-      carrito.splice(index, 1);
-    }
-    
-    
-    
+    return libro.id===idLibro;
+  });
+  if (index !== -1) {
+    carrito.splice(index, 1);
+    estadoCarrito();
+    console.log(carrito);
+  }   
 }
+function estadoCarrito (){
+  let total= carrito.length;
+  document.getElementById ("totalCart").innerHTML = total;
+
+}
+function estadoCarritoPrecio(){
+  let total= 0;
+  for 
+}
+
 
 
 libros.forEach((libro) => {
-  const idButton = `add-cart${libro.id}`; 
-  document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
+   document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
   
@@ -96,24 +113,17 @@ libros.forEach((libro) => {
           <h5 class="fw-bolder"> nombre:${libro.name}</h5>
           
           $${libro.price}
-      </div>
+      </div
   </div>
   
   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-      <div class="text-center"><a id="${idButton}" onclick="sumarAlCarro()" class="btn btn-outline-dark mt-auto">Agregar al Carrito</a></div>
-      <div class="text-center"><a id="${idButton}" onclick="quitarDelCarro()" class="btn btn-outline-dark mt-auto">Quitar del Carrito</a></div>
+      <div class="text-center"><a  onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark mt-auto">Agregar al Carrito</a></div>
+      <div class="text-center"><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark mt-auto">Quitar del Carrito</a></div>
   </div>
 </div>       
 </div>`;
 })
 
-libros.forEach((libro) => {
-  const idButton = `add-cart${libro.id}` 
-  document.getElementById(idButton).addEventListener('click', () => {
-    carrito.push(libros);   
-  })
-  
-});
 
 
 
