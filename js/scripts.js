@@ -45,11 +45,14 @@ console.log(autores.length);
 autores.push('edgarAllanPoe');
 console.log(autores.length); 
 console.log(genero); 
+
+const totalCarrito = localStorage.getItem("totalCarrito");
+document.getElementById("totalCart").innerHTML = totalCarrito;
+
 */
 
 
-const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
-const autores = ["Edgar Allan Poe", "Antony Burgess", "Alejandro Casona", "J.K Rowling", "J.R.R Tolkien"];
+
 const libros = [
   {"id":001, "name":"Harry Potter","imagen":"harry potter.jpg", "price":3200, "autor":"J.K Rowling", "stock":0},
   {"id":002, "name":"El señor de los anillos","imagen":"lordOfTheRings.png","price":4500, "autor":"J.R.R Tolkien", "stock":0},
@@ -81,7 +84,6 @@ function quitarDelCarro(nameLibro) {
 }
 
 
-
 libros.forEach((libro) => {
   const idButton = `add-cart${libro.id}`; 
   document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
@@ -99,6 +101,7 @@ libros.forEach((libro) => {
   
   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
       <div class="text-center"><a id="${idButton}" onclick="sumarAlCarro()" class="btn btn-outline-dark mt-auto">Agregar al Carrito</a></div>
+      <div class="text-center"><a id="${idButton}" onclick="quitarDelCarro()" class="btn btn-outline-dark mt-auto">Quitar del Carrito</a></div>
   </div>
 </div>       
 </div>`;
