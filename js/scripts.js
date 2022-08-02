@@ -110,7 +110,7 @@ libros.forEach((libro) => {
 libros.forEach((libro) => {
   const idButton = `add-cart${libro.id}` 
   document.getElementById(idButton).addEventListener('click', () => {
-      alert("hola seleccionaste: " +  libro.name + " $" + libro.price) ;   
+    carrito.push(libros);   
   })
   
 });
