@@ -95,10 +95,7 @@ function estadoCarrito (){
   document.getElementById ("totalCart").innerHTML = total;
 
 }
-function estadoCarritoPrecio(){
-  let total= 0;
-  for 
-}
+
 
 
 
@@ -123,12 +120,6 @@ libros.forEach((libro) => {
 </div>       
 </div>`;
 })
-
-
-
-
-
-
 
 
 
