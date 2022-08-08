@@ -62,8 +62,9 @@ const libros = [
   {"id":007, "name":"La naranja mecanica", "price":3900,"imagen":"la naranja portada.jpg", "autor":"Antony Burgess", "stock":20, "genero":"terror"},
   {"id":8, "name":"Prohibido suicidarse en primavera", "price":6000,"imagen":"prohibido suicidarse en primavera.jpg", "autor":"Alejandro Casona", "stock":15, "genero":"terror"}
 ] ;
-const carrito =JSON.parse(localStorage.getItem('carrito')) ?? [];
-document.getElementById("totalCart").innerHTML = carrito.length;
+
+const carrito =JSON.parse(localStorage.getItem('carrote')) ?? [];
+estadoCarrito();
 
  function sumarAlCarro(idLibro) {
   const index= libros.findIndex(
@@ -73,8 +74,7 @@ document.getElementById("totalCart").innerHTML = carrito.length;
   );
   if (index!== -1){
     carrito.push(libros[index]);
-    estadoCarrito();
-    console.log(carrito); 
+    actualizarCarro();
   }
 }
 
@@ -86,8 +86,7 @@ function quitarDelCarro(idLibro) {
   });
   if (index !== -1) {
     carrito.splice(index, 1);
-    estadoCarrito();
-    console.log(carrito);
+    actualizarCarro();
   }   
 }
 function estadoCarrito (){
@@ -96,10 +95,19 @@ function estadoCarrito (){
   console.log(total);
 
 }
+function actualizarCarro(){
+  estadoCarrito();
+  console.log(carrito);
+  localStorage.setItem("carrote", JSON.stringify(carrito)); 
+}
 
-
-
-
+function filtrarLibros(genero){
+  let librosFiltrados = libros.filter(
+    function (libro) {
+    return libro.genero===genero;
+  });
+  console.log(librosFiltrados);
+}
 
 libros.forEach((libro) => {
    document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
