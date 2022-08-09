@@ -102,6 +102,7 @@ function actualizarCarro(){
 }
 
 function filtrarLibros(genero){
+  document.getElementById("seccion-card").innerHTML = "";
   let librosFiltrados = libros.filter(
     function (libro) {
     return libro.genero===genero;
@@ -109,6 +110,8 @@ function filtrarLibros(genero){
   console.log(librosFiltrados);
 }
 
+
+function generarCards(){
 libros.forEach((libro) => {
    document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
                             
@@ -130,26 +133,17 @@ libros.forEach((libro) => {
   </div>
   
 </div>       
-</div>`;
+</div>`
 })
+}
+
+generarCards()
 
 /*
 
-function filtrarLibrosPorGenero(genero) {
-    document.getElementById("seccion-card").innerHTML = "";
-    const librosFiltrados = libros.filter((libro) => libro.genero === genero);
-
-    librosFiltrados.forEach((libro) => {
-        const idButton = `add-cart${libro.id}` 
-        document.getElementById("seccion-card").innerHTML += `<div class="card">
-            <div class="precio">
-                <p>$${libro.price}</p>
-            </div>
-            <img src="${libro.imagen}">
-            <h4>${libro.name}</h4>
-            <a class="boton" id="${idButton}" data-id="${libro.id}">Añadir Al Carrito</a>
-        </div>`;
-    })
+librosFiltrados.forEach((libro) => {
+  
+  generarCards();
 }
 
 */
