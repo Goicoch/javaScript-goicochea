@@ -73,8 +73,7 @@ estadoCarrito();
     }
   );
   if (index!== -1){
-    carrito.push(libros[index]);
-    actualizarCarro();
+    carrito.push(libros[index]) && actualizarCarro();  
   }
 }
 
@@ -85,13 +84,12 @@ function quitarDelCarro(idLibro) {
     return libro.id===idLibro;
   });
   if (index !== -1) {
-    carrito.splice(index, 1);
-    actualizarCarro();
+    carrito.splice(index, 1) && actualizarCarro();  
   }   
 }
 function estadoCarrito (){
   let total= carrito.length;
-  document.getElementById ("totalCart").innerHTML = total;
+  document.getElementById ("totalCart").innerHTML = total
   console.log(total);
 
 }
