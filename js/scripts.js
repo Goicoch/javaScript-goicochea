@@ -1,54 +1,4 @@
-/* MULTIPLICADOR
-alert ("El 1er numero se multiplicara por el 2do" );
-let ingresarNumero = parseInt(prompt("Ingresar Numero"));
 
-for (let i = parseInt(prompt("Ingresar Numero")); i >= 0; ) {
-    let resultado = ingresarNumero * i ;
-console.log(ingresarNumero +" X "+ i +" = "+ resultado);
-}
-
-function numerosImpares(){
-alert("Se mostraran los numeros impares hasta 99")
-for (let i = 0; i < 100; i++) {
-
-    if (i % 2) {
-      alert( i );
-    }
-  
-  }
-}
-numerosImpares()
-
-
- 
-function promedioDeEdad(){
-  let sumaEdades = 0;
-  for (let i = 1; i <6 ; i++){
-    let edad=parseInt(prompt("ingrese edad"+" "+ i));
-    sumaEdades = sumaEdades + edad;
-  
-  } 
-  alert("promedio edad" +" " + sumaEdades/5)
-  }
-
-  promedioDeEdad();
-
-
-
-  const genero = [ "aventura", "cienciaFiccion", "terror", "gotico"," policial"];
-  const autores = ["miguelCervantes", "marquesDeSade", "GOETHE", "janeAusten", "victorHugo"];
-
- 
-
-console.log(autores.length); 
-
-autores.push('edgarAllanPoe');
-console.log(autores.length); 
-console.log(genero); 
-
-
-
-*/
 function bienvenida(){
 let nombre= prompt("ingrese su nombre");
 nombre !=""? alert("bienvenido " + nombre):alert("bienvenido sin nombre "); // operador ternario
@@ -93,29 +43,21 @@ function quitarDelCarro(idLibro) {
   }   
 }
 
-function estadoCarrito (){
+function estadoCarrito () {
   let total= carrito.length;
   document.getElementById ("totalCart").innerHTML = total
   console.log(total);
 
 }
-function actualizarCarro(){
+function actualizarCarro() {
   estadoCarrito();
   console.log(carrito);
   localStorage.setItem("carrote", JSON.stringify(carrito)); 
 }
 
-function filtrarLibros(genero){
-  document.getElementById("seccion-card").innerHTML = "";
-  let librosFiltrados = libros.filter(
-    function (libro) {
-    return libro.genero===genero;
-  });
-  console.log(librosFiltrados);
-}
 
 
-function generarCards(){
+function generarCards() {
 libros.forEach((libro) => {
    document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
                             
@@ -144,6 +86,15 @@ libros.forEach((libro) => {
 generarCards()
 
 /*
+
+function filtrarLibros(genero){
+  document.getElementById("seccion-card").innerHTML = "";
+  let librosFiltrados = libros.filter(
+    function (libro) {
+    return libro.genero===genero;
+  });
+  console.log(librosFiltrados);
+}
 
 librosFiltrados.forEach((libro) => {
   
