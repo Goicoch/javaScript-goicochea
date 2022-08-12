@@ -49,8 +49,12 @@ console.log(genero);
 
 
 */
+function bienvenida(){
+let nombre= prompt("ingrese su nombre");
+nombre !=""? alert("bienvenido " + nombre):alert("bienvenido sin nombre "); // operador ternario
+}
 
-
+bienvenida();
 
 const libros = [
   {"id":001, "name":"Harry Potter","imagen":"harry potter.jpg", "price":3200, "autor":"J.K Rowling", "stock":0, "genero":"terror"},
@@ -63,7 +67,7 @@ const libros = [
   {"id":8, "name":"Prohibido suicidarse en primavera", "price":6000,"imagen":"prohibido suicidarse en primavera.jpg", "autor":"Alejandro Casona", "stock":15, "genero":"terror"}
 ] ;
 
-const carrito =JSON.parse(localStorage.getItem('carrote')) ?? [];
+const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
 estadoCarrito();
 
  function sumarAlCarro(idLibro) {
@@ -73,7 +77,7 @@ estadoCarrito();
     }
   );
   if (index!== -1){
-    carrito.push(libros[index]) && actualizarCarro();  
+    carrito.push(libros[index]) && actualizarCarro();  // operador logico AND
   }
 }
 
@@ -82,11 +86,13 @@ function quitarDelCarro(idLibro) {
   const index = carrito.findIndex(
     function (libro) {
     return libro.id===idLibro;
-  });
+  }
+  );
   if (index !== -1) {
-    carrito.splice(index, 1) && actualizarCarro();  
+    carrito.splice(index, 1) && actualizarCarro();  // operador logico AND
   }   
 }
+
 function estadoCarrito (){
   let total= carrito.length;
   document.getElementById ("totalCart").innerHTML = total
