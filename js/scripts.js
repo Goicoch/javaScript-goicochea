@@ -1,9 +1,8 @@
 
 function bienvenida(){
 let nombre= prompt("ingrese su nombre");
-nombre !=""? alert("bienvenido " + nombre):alert("bienvenido sin nombre "); // operador ternario
+nombre !=""?swal("Hola"+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
 }
-
 bienvenida();
 
 const libros = [
@@ -39,7 +38,7 @@ function quitarDelCarro(idLibro) {
   }
   );
   if (index !== -1) {
-    carrito.splice(index, 1) && actualizarCarro();  // operador logico AND
+    carrito.splice(index, 1) &&  actualizarCarro();  // operador logico AND
   }   
 }
 
@@ -55,26 +54,45 @@ function actualizarCarro() {
   localStorage.setItem("carrote", JSON.stringify(carrito)); 
 }
 
-
+function advertencia(){ 
+  swal({
+  title: "Estas seguro/a?",
+  text: "Una vez borrado el producto debera ingresarlo nuevamente",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    quitarDelCarro()
+    swal("Poof! Quitaste el producto!!!", {
+      icon: "success",
+    });
+  } else {
+    swal("Tu producto sigue en el carro");
+  }
+});
+}
 
 function generarCards() {
 libros.forEach((libro) => {
-   document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-5 "><div class="card ">
+   document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-4 "><div class="card ">
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
   
   <div class="card-body p-4">
       <div class="text-center">
-          
-          <h5 class="fw-bolder"> Nombre:<br> ${libro.name}</h5>
+     
+          <h5 class="fw-bolder"> ${libro.name}</h5>
           
           $${libro.price}
       </div
   </div>
-  <br>
-  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+  
+  <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
       <div class="text-center"><a  onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark ">Agregar al Carrito</a></div>
-      <div class="text-center"><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
+     <br>
+      <div class="text-center"><a  onclick="advertencia(),quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
      
   </div>
   
