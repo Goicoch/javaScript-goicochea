@@ -1,7 +1,7 @@
 
 function bienvenida(){
 let nombre= prompt("ingrese su nombre");
-nombre !=""?swal("Hola"+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
+nombre !==""?swal("Hola"+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
 }
 bienvenida();
 
@@ -23,10 +23,19 @@ estadoCarrito();
   const index= libros.findIndex(
     function (libro){
       return libro.id===idLibro;
-    }
+}
   );
   if (index!== -1){
-    carrito.push(libros[index]) && actualizarCarro();  // operador logico AND
+    let libroAagregar=libros[index];
+    carrito.push(libroAagregar) && actualizarCarro();
+    
+    Toastify({
+
+      text: "Agregaste "+ libroAagregar.name,
+      
+      duration: 3000
+      
+      }).showToast();
   }
 }
 
@@ -54,7 +63,7 @@ function actualizarCarro() {
   localStorage.setItem("carrote", JSON.stringify(carrito)); 
 }
 
-function advertencia(){ 
+function advertencia(idLibro){ 
   swal({
   title: "Estas seguro/a?",
   text: "Una vez borrado el producto debera ingresarlo nuevamente",
@@ -64,7 +73,7 @@ function advertencia(){
 })
 .then((willDelete) => {
   if (willDelete) {
-    quitarDelCarro()
+    quitarDelCarro(idLibro);
     swal("Poof! Quitaste el producto!!!", {
       icon: "success",
     });
@@ -78,8 +87,9 @@ function advertencia(){
 
    
 
-function generarCards() {
-libros.forEach((libro) => {
+function generarCards(librosAlistar) {
+  document.getElementById("seccion-card").innerHTML="";
+librosAlistar.forEach((libro) => {
    document.getElementById("seccion-card").innerHTML += `  <div  class="col mb-4 "><div class="card ">
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
@@ -96,7 +106,7 @@ libros.forEach((libro) => {
   <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
       <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark">Agregar al Carrito</a></div>
      <br>
-      <div class="text-center"><a  onclick="advertencia(),quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
+      <div class="text-center"><a  onclick="advertencia(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
      
   </div>
   
@@ -105,10 +115,9 @@ libros.forEach((libro) => {
 })
 }
 
-generarCards()
+generarCards(libros);
 
 
-  /*
 
 
 function filtrarLibros(genero){
@@ -118,11 +127,10 @@ function filtrarLibros(genero){
     return libro.genero===genero;
   });
   console.log(librosFiltrados);
+  generarCards(librosFiltrados);
 }
 
-librosFiltrados.forEach((libro) => {
-  
-  generarCards();
-}
 
-*/
+//filtrarLibros("terror");
+
+
