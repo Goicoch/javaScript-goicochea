@@ -74,9 +74,13 @@ function advertencia(){
 });
 }
 
+
+
+   
+
 function generarCards() {
 libros.forEach((libro) => {
-   document.getElementById("seccion-card").innerHTML += ` <div  class="col mb-4 "><div class="card ">
+   document.getElementById("seccion-card").innerHTML += `  <div  class="col mb-4 "><div class="card ">
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
   
@@ -90,7 +94,7 @@ libros.forEach((libro) => {
   </div>
   
   <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
-      <div class="text-center"><a  onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark ">Agregar al Carrito</a></div>
+      <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark">Agregar al Carrito</a></div>
      <br>
       <div class="text-center"><a  onclick="advertencia(),quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
      
@@ -103,7 +107,9 @@ libros.forEach((libro) => {
 
 generarCards()
 
-/*
+
+  /*
+
 
 function filtrarLibros(genero){
   document.getElementById("seccion-card").innerHTML = "";
