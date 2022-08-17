@@ -4,7 +4,7 @@ let nombre= prompt("ingrese su nombre");
 nombre !==""?swal("Hola"+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
 }
 bienvenida();
-
+ 1
 const libros = [
   {"id":001, "name":"Harry Potter","imagen":"harry potter.jpg", "price":3200, "autor":"J.K Rowling", "stock":0, "genero":"terror"},
   {"id":002, "name":"El señor de los anillos","imagen":"lordOfTheRings.png","price":4500, "autor":"J.R.R Tolkien", "stock":0, "genero":"fantasia"},
@@ -47,7 +47,15 @@ function quitarDelCarro(idLibro) {
   }
   );
   if (index !== -1) {
-    carrito.splice(index, 1) &&  actualizarCarro();  // operador logico AND
+    let libroAquitar=libros[index];
+    carrito.splice(libroAquitar, 1) &&  actualizarCarro();  
+    Toastify({
+
+      text: "quitaste "+ libroAquitar.name,
+      
+      duration: 3000
+      
+      }).showToast();
   }   
 }
 
