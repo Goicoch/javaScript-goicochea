@@ -1,20 +1,21 @@
 
 function bienvenida(){
 let nombre= prompt("ingrese su nombre");
-nombre !==""?swal("Hola"+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
+nombre !==""?swal("Hola "+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
 }
 bienvenida();
- 1
-/*const libros = [
-  {"id":001, "name":"Harry Potter","imagen":"harry potter.jpg", "price":3200, "autor":"J.K Rowling", "stock":0, "genero":"terror"},
-  {"id":002, "name":"El señor de los anillos","imagen":"lordOfTheRings.png","price":4500, "autor":"J.R.R Tolkien", "stock":0, "genero":"fantasia"},
-  {"id":003, "name":"Juegos del hambre", "price":5000, "imagen":"JDH.webp","autor":"Suzzanne Collins", "stock":0, "genero":"terror"},
-  {"id":004, "name":"Animales fantasticos", "price":5000,"imagen":"animales fantasticos.jpeg", "autor":"J.K Rowling", "stock":5, "genero":"terror"},
-  {"id":005, "name":"El gato negro", "price":3500,"imagen":"el gato negro.jpg", "autor":"Edgar Allan Poe", "stock":12, "genero":"fantasia"},
-  {"id":006, "name":"El hobbit", "price":4500,"imagen":"el hobbit.jpg", "autor":"J.R.R Tolkien", "stock":17, "genero":"fantasia"},
-  {"id":007, "name":"La naranja mecanica", "price":3900,"imagen":"la naranja portada.jpg", "autor":"Antony Burgess", "stock":20, "genero":"terror"},
-  {"id":8, "name":"Prohibido suicidarse en primavera", "price":6000,"imagen":"prohibido suicidarse en primavera.jpg", "autor":"Alejandro Casona", "stock":15, "genero":"terror"}
-] ;*/
+
+
+let libros =[];
+
+ buscarUnProductoEnJson = async () => {
+  const response = await fetch('libros.json');
+  const libros = await response.json();
+  generarCards(libros);
+  };
+ buscarUnProductoEnJson();
+ 
+
 
 const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
 estadoCarrito();
@@ -123,7 +124,7 @@ librosAlistar.forEach((libro) => {
 })
 }
 
-generarCards(libros);
+
 
 
 
@@ -137,16 +138,4 @@ function filtrarPorGenero(genero){
   console.log(librosFiltrados);
   generarCards(librosFiltrados);
 }
-/*
-const buscarUnProductoEnJson = () {
-fetch('libros.json')
-.then((response=>response.json())
-.then (information =>{
-  let acumulador= ``;
-  information.forEach((libro)=>{
-    console.log (producto)
-  }
-}
-*/
-
 
