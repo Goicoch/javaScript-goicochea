@@ -1,7 +1,7 @@
 
 function bienvenida(){
 let nombre= prompt("ingrese su nombre");
-nombre !==""?swal("Hola "+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido sin nombre "); // operador ternario
+nombre !==""?swal("Hola "+ nombre , "Bienvenido a Gasparinc"):swal("Bienvenido sin nombre "); 
 }
 bienvenida();
 
@@ -53,10 +53,11 @@ function quitarDelCarro(idLibro) {
   );
   if (index !== -1) {
     let libroAquitar=libros[index];
-    carrito.splice(index, 1) &&  actualizarCarro();  
+    carrito.splice(index, 1) && actualizarCarro();  
+
    /* Toastify({
 
-      text: "quitaste "+ libroAquitar.name,
+      text: "Quitaste "+ libroAquitar.name,
       
       duration: 3000
       

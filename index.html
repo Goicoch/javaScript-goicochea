@@ -56,9 +56,18 @@
         
         <section id="filtro" class="py-5">
             
-            <div class="sticky-bottom btn-group">
-                <a onclick="filtrarPorGenero('terror')" class="btn btn-outline-dark">Filtrar por Genero</a>
-                
+            
+               
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filtrar por Genero
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                      <li><a class="dropdown-item" onclick="filtrarPorGenero('terror')">Terror</a></li>
+                      <li><a class="dropdown-item" onclick="filtrarPorGenero('fantasia')">Fantasia</a></li>
+                    </ul>
+                  </div>
+                </div>
             </div>
             
                 
@@ -71,6 +80,7 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/scripts.js"></script> 
     </body>
 </html>
