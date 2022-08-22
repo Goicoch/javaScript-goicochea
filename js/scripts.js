@@ -6,15 +6,19 @@ nombre !==""?swal("Hola "+ nombre , "Bienvenido a Gasparinc"):swal("bienvenido s
 bienvenida();
 
 
-let libros =[];
-
+ let libros =[];
+ 
  buscarUnProductoEnJson = async () => {
-  const response = await fetch('libros.json');
-  const libros = await response.json();
+  let response = await fetch('libros.json');
+  libros = await response.json();
   generarCards(libros);
+  
   };
+ 
  buscarUnProductoEnJson();
  
+
+
 
 
 const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
@@ -23,7 +27,7 @@ estadoCarrito();
  function sumarAlCarro(idLibro) {
   const index= libros.findIndex(
     function (libro){
-      return libro.id===idLibro;
+    return libro.id===idLibro;
 }
   );
   if (index!== -1){
@@ -49,14 +53,14 @@ function quitarDelCarro(idLibro) {
   );
   if (index !== -1) {
     let libroAquitar=libros[index];
-    carrito.splice(libroAquitar, 1) &&  actualizarCarro();  
-    Toastify({
+    carrito.splice(index, 1) &&  actualizarCarro();  
+   /* Toastify({
 
       text: "quitaste "+ libroAquitar.name,
       
       duration: 3000
       
-      }).showToast();
+      }).showToast();*/
   }   
 }
 
