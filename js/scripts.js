@@ -149,14 +149,16 @@ function filtrarPorGenero(genero){
 function mostrarCarrito(){
   document.getElementById("mostrarCarro").innerHTML="";
   carrito.forEach((libro) =>{
-    document.getElementById("mostrarCarro").innerHTML+=`<tr>
-    <th scope="row"> $${libro.price}</th>
-    <td>${libro.name}</td>
-    <td><img class="card-img-top" src="./imagenes/${libro.imagen}" style="width:200px" alt="..." /></td>
-    <td><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></td>
-    </tr>`
+    document.getElementById("mostrarCarro").innerHTML+=`
+    <tr class="table-dark">
+    <td class="table-dark">${libro.name}</td>
+    <td class="table-dark"><img class="card-img-top" src="./imagenes/${libro.imagen}" style="width:200px" alt="..." /></td>
+    <td class="table-dark"> $${libro.price}</td>
+    <td class="table-dark"><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></td>
+    </tr><
+    `
     });
-    actualizarCarro();
+    
     console.log(carrito)
   }
  
