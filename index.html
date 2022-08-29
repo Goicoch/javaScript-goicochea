@@ -34,7 +34,7 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button type="button" onclick="mostrarCarrito()" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-outline-dark carro"  >
+                        <button type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" class="btn btn-outline-dark carro"  >
                             <i class="bi-cart-fill me-1"></i>
                             <a >Carrito</a>
                             <span id="totalCart" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -55,31 +55,22 @@
         </header>
         
         <section id="filtro" class="py-5">
- 
-  
-  <!-- Modal -->
-  <div class=" modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Tu Carrito</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div  class="modal-body">
-        <table id="mostrarCarro" class="table table-dark table-striped">
-            
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-            <div>
-
+     
+            <div class="bg-dark offcanvas w-50 p-3 offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+           
+              <div class="offcanvas-body">
+                <table id="mostrarCarro" class="table table-dark table-striped">
+                </table>
+              </div>
             </div>
+
+            
+
+            
                 
                 <div class="btn-group" role="group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
