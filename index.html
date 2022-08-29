@@ -36,7 +36,7 @@
                     <form class="d-flex">
                         <button   class="btn btn-outline-dark carro"  type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            <a href="./paginas/articulos.html">Carrito</a>
+                            <a >Carrito</a>
                             <span id="totalCart" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                         
@@ -57,23 +57,27 @@
         <section id="filtro" class="py-5">
             
             
-               
+            <div id="mostrarCarro">
+
+            </div>
+                
                 <div class="btn-group" role="group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Filtrar por Genero
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item"  >carro</a></li>
                       <li><a class="dropdown-item" onclick="filtrarPorGenero('terror')">Terror</a></li>
                       <li><a class="dropdown-item" onclick="filtrarPorGenero('fantasia')">Fantasia</a></li>
                     </ul>
                   </div>
                 </div>
             </div>
-            
-                
+           
             <div class="container px-4 px-lg-5 mt-5">
                 <div id="seccion-card" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 </div>
+                
             </div>
         </section>
         
