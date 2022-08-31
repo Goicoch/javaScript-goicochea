@@ -53,18 +53,20 @@ function quitarDelCarro(idLibro) {
     return libro.id===idLibro;
   }
   );
+  
   if (index !== -1) {
     let libroAquitar=libros[index];
     carrito.splice(index, 1) && actualizarCarro();  
 
    /* Toastify({
 
+
       text: "Quitaste "+ libroAquitar.name,
       
       duration: 3000
       
       }).showToast();*/
-  }   
+  }  
 }
 
 function estadoCarrito () {
@@ -100,9 +102,6 @@ function advertencia(idLibro){
 }
 
 
-
-   
-
 function generarCards(librosAlistar) {
   document.getElementById("seccion-card").innerHTML="";
 librosAlistar.forEach((libro) => {
@@ -132,10 +131,6 @@ librosAlistar.forEach((libro) => {
 }
 
 
-
-
-
-
 function filtrarPorGenero(genero){
   document.getElementById("seccion-card").innerHTML = "";
   let librosFiltrados = libros.filter(
@@ -148,18 +143,26 @@ function filtrarPorGenero(genero){
 
 function mostrarCarrito(){
   document.getElementById("mostrarCarro").innerHTML="";
-  carrito.forEach((libro) =>{
+ carrito.forEach((libro) =>{
+  
     document.getElementById("mostrarCarro").innerHTML+=`
     <tr class="table-dark">
     <td class="table-dark">${libro.name}</td>
     <td class="table-dark"> $${libro.price}</td>
-    <td class="table-dark"><img class="card-img-top" src="./imagenes/${libro.imagen}" style="width:200px" alt="..." /></td>
+    <td class="table-dark"><img class="card-img-top" src="./imagenes/${libro.imagen}" style="width:150px;height:200px" alt="..." /></td>
     
     <td class="table-dark"><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></td>
     </tr>
     `
     });
     
-    console.log(carrito)
+    
   }
- 
+
+
+ function vaciarCarrito() {
+  
+ let carroVacio = carrito.length = 0
+ document.getElementById ("totalCart").innerHTML = carroVacio
+ actualizarCarro();
+ }
