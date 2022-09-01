@@ -58,15 +58,18 @@
      
             <div class="bg-dark offcanvas w-50 p-3 offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
               <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel" style="color: white;">Tu Carrito</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
            
               <div class="offcanvas-body">
                 <table id="mostrarCarro" class="table table-dark table-striped">
                 </table>
+                <p id="precioTotalCarro" style="color: white;"> Precio total</p>
                 <button type="button" id="btnVaciar" onclick="vaciarCarrito()" class="btn btn-outline-dark carro">Vaciar Carro</button>
-              </div>
+             
+            </div>
+            
             </div>
 
             
@@ -78,7 +81,7 @@
                         Filtrar por Genero
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item">carro</a></li>
+                        <li><a class="dropdown-item" onclick="filtrarPorPrecio('price')">carro</a></li>
                       <li><a class="dropdown-item" onclick="filtrarPorGenero('terror')">Terror</a></li>
                       <li><a class="dropdown-item" onclick="filtrarPorGenero('fantasia')">Fantasia</a></li>
                     </ul>

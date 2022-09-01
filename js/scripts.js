@@ -122,7 +122,6 @@ librosAlistar.forEach((libro) => {
       <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark">Agregar al Carrito</a></div>
      <br>
       <div class="text-center"><a  onclick="advertencia(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
-     
   </div>
   
 </div>       
@@ -156,13 +155,30 @@ function mostrarCarrito(){
     `
     });
     
-    
+    actualizarCarro();
   }
 
 
  function vaciarCarrito() {
-  
- let carroVacio = carrito.length = 0
+  let carroVacio = carrito.length = 0
  document.getElementById ("totalCart").innerHTML = carroVacio
  actualizarCarro();
  }
+ 
+ /*function precioTotalCarro(params) {
+ totalCarrito.innnerText = carrito.reduce((acc, libro)=> acc + libro.price, 0)
+  document.getElementById ("precioTotalCarro").innerHTML = totalCarrito
+  precioTotalCarro();
+  actualizarCarro();
+ }*/
+
+
+ function filtrarPorPrecio(price){
+  document.getElementById("seccion-card").innerHTML = "";
+  let librosFiltrados = libros.filter(
+    function (libro) {
+    return libro.price<=4000;
+  });
+  console.log(librosFiltrados);
+  generarCards(librosFiltrados);
+}
