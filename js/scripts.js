@@ -35,7 +35,7 @@ estadoCarrito();
   if (index!== -1){
     let libroAagregar=libros[index];
     carrito.push(libroAagregar) && actualizarCarro();
-    
+    sumarCarro();
     Toastify({
 
       text: "Agregaste "+ libroAagregar.name,
@@ -43,6 +43,7 @@ estadoCarrito();
       duration: 3000
       
       }).showToast();
+      
   }
 }
 
@@ -57,7 +58,7 @@ function quitarDelCarro(idLibro) {
   if (index !== -1) {
     let libroAquitar=libros[index];
     carrito.splice(index, 1) && actualizarCarro();  
-
+    sumarCarro();
    /* Toastify({
 
 
@@ -150,7 +151,7 @@ function mostrarCarrito(){
     <td class="table-dark"> $${libro.price}</td>
     <td class="table-dark"><img class="card-img-top" src="./imagenes/${libro.imagen}" style="width:150px;height:200px" alt="..." /></td>
     
-    <td class="table-dark"><a  onclick="quitarDelCarro(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></td>
+    <td class="table-dark"><a  onclick="advertencia(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></td>
     </tr>
     `
     });
@@ -160,24 +161,27 @@ function mostrarCarrito(){
 
 
  function vaciarCarrito() {
-  let carroVacio = carrito.length = 0
- document.getElementById ("totalCart").innerHTML = carroVacio
+  carroVacio = carrito.length = 0
+  
+ document.getElementById ("mostrarCarro").innerHTML = carroVacio
  actualizarCarro();
+  advertencia();
+  sumarCarro()
  }
  
- /*function precioTotalCarro(params) {
- totalCarrito.innnerText = carrito.reduce((acc, libro)=> acc + libro.price, 0)
-  document.getElementById ("precioTotalCarro").innerHTML = totalCarrito
-  precioTotalCarro();
-  actualizarCarro();
- }*/
+ 
+function sumarCarro(){
+document.getElementById ("precioTotalCarro").innerHTML = carrito.map(libro => libro.price).reduce((prev, curr) => prev + curr, 0);
+actualizarCarro();
+}
+
 
 
  function filtrarPorPrecio(price){
   document.getElementById("seccion-card").innerHTML = "";
   let librosFiltrados = libros.filter(
     function (libro) {
-    return libro.price<=4000;
+    return libro.price<=price;
   });
   console.log(librosFiltrados);
   generarCards(librosFiltrados);

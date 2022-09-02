@@ -65,7 +65,8 @@
               <div class="offcanvas-body">
                 <table id="mostrarCarro" class="table table-dark table-striped">
                 </table>
-                <p id="precioTotalCarro" style="color: white;"> Precio total</p>
+                <a style="color: white;"> Precio total</a>
+                <span id="precioTotalCarro" style="color: white;">0</span>
                 <button type="button" id="btnVaciar" onclick="vaciarCarrito()" class="btn btn-outline-dark carro">Vaciar Carro</button>
              
             </div>
@@ -81,9 +82,16 @@
                         Filtrar por Genero
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" onclick="filtrarPorPrecio('price')">carro</a></li>
-                      <li><a class="dropdown-item" onclick="filtrarPorGenero('terror')">Terror</a></li>
+                        <li><a class="dropdown-item" onclick="filtrarPorGenero('terror')">Terror</a></li>
                       <li><a class="dropdown-item" onclick="filtrarPorGenero('fantasia')">Fantasia</a></li>
+                    </ul>
+                    <button id="btnGroupDrop2" type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filtrar por precio
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                        <li><a class="dropdown-item" onclick="filtrarPorPrecio(4000)">$4000</a></li>
+                      <li><a class="dropdown-item" onclick="filtrarPorPrecio(5000)">$5000</a></li>
+                      <li><a class="dropdown-item" onclick="filtrarPorPrecio(6000)">$6000</a></li>
                     </ul>
                   </div>
                 </div>
