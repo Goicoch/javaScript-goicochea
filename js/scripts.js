@@ -35,7 +35,9 @@ estadoCarrito();
   if (index!== -1){
     let libroAagregar=libros[index];
     carrito.push(libroAagregar) && actualizarCarro();
+   
     sumarCarro();
+    
     Toastify({
 
       text: "Agregaste "+ libroAagregar.name,
@@ -59,6 +61,7 @@ function quitarDelCarro(idLibro) {
     let libroAquitar=libros[index];
     carrito.splice(index, 1) && actualizarCarro();  
     sumarCarro();
+    
    /* Toastify({
 
 
@@ -93,6 +96,7 @@ function advertencia(idLibro){
 .then((willDelete) => {
   if (willDelete) {
     quitarDelCarro(idLibro);
+    
     swal("Poof! Quitaste el producto!!!", {
       icon: "success",
     });
@@ -161,12 +165,12 @@ function mostrarCarrito(){
 
 
  function vaciarCarrito() {
+  document.getElementById ("mostrarCarro").innerHTML =""
   carroVacio = carrito.length = 0
-  
- document.getElementById ("mostrarCarro").innerHTML = carroVacio
+   document.getElementById ("mostrarCarro").innerHTML = carroVacio
  actualizarCarro();
   advertencia();
-  sumarCarro()
+  sumarCarro();
  }
  
  
