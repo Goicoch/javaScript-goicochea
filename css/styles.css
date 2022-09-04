@@ -6311,8 +6311,11 @@ background: linear-gradient(270deg, rgba(24,32,31,1) 36%, rgba(64,81,83,1) 50%, 
   margin-bottom: 0;
   line-height: 1.5;
 }
-
+.tituloCanvas{
+  font-size:25px;
+}
 .offcanvas-body {
+  background-color:#3F3C3C   ;
   flex-grow: 1;
   padding: 1rem 1rem;
   overflow-y: auto;
