@@ -19,8 +19,6 @@ buscarUnProductoEnJson();
 const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
 estadoCarrito();
 
-
-
 function sumarAlCarro(idLibro) {
   const index= libros.findIndex(
     function (libro){
@@ -33,7 +31,7 @@ function sumarAlCarro(idLibro) {
     
     estadoCarrito();
    
-    actualizarCarroPrecio()
+    
     
     Toastify({
 
@@ -59,7 +57,7 @@ function quitarDelCarro(idLibro) {
 
     carrito.splice(index, 1) && actualizarCarro();  
    
-    actualizarCarroPrecio()
+    
     
    /* Toastify({
 
@@ -79,11 +77,13 @@ function advertencia(idLibro){
   icon: "warning",
   buttons: true,
   dangerMode: true,
+  
 })
 .then((willDelete) => {
   if (willDelete) {
     quitarDelCarro(idLibro);
     mostrarCarrito();
+    validarInput()
     swal("Poof! Quitaste el producto!!!", {
       icon: "success",
     });
@@ -129,12 +129,6 @@ function actualizarCarro() {
   
 }
 
-function actualizarCarroPrecio() {
-  
-  console.log(totalSumado);
-  localStorage.setItem("carroteSumado", JSON.stringify(sumarLibrosCarrito));
-}
-
 function generarCards(librosAlistar) {
   document.getElementById("seccion-card").innerHTML="";
 librosAlistar.forEach((libro) => {
@@ -142,7 +136,7 @@ librosAlistar.forEach((libro) => {
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
   
-  <div class="card-body p-4">
+  <div class="card-body p-0">
       <div class="text-center">
      
           <h5 class="fw-bolder"> ${libro.name}</h5>
@@ -151,10 +145,10 @@ librosAlistar.forEach((libro) => {
       </div
   </div>
   
-  <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
-      <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class="btn btn-outline-dark">Agregar al Carrito</a></div>
+  <div class="card-footer p-4 pt-3 border-top-1 bg-transparent">
+      <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class=" botonIMG btn btn-outline-dark">Agregar al Carrito</a></div>
      <br>
-      <div class="text-center"><a  onclick="advertencia(${libro.id})" class="btn btn-outline-dark ">Quitar del Carrito</a></div>
+      <div class="text-center"><a  onclick="advertencia(${libro.id})" class=" botonIMG btn btn-outline-dark ">Quitar del Carrito</a></div>
   </div>
   
 </div>       
@@ -191,8 +185,7 @@ function mostrarCarrito(){
     let totalSumado= carrito.map(libro => libro.price).reduce((prev, curr) => prev + curr, 0);
     document.getElementById ("precioTotalCarro").innerHTML = totalSumado
     console.log(totalSumado);
-    //actualizarCarro();
-   // actualizarCarroPrecio();
+  
 }
 
 function vaciarCarrito() {
@@ -200,8 +193,8 @@ function vaciarCarrito() {
 carroVacio = carrito.length = 0
   document.getElementById ("mostrarCarro").innerHTML = carroVacio
 actualizarCarro();
-actualizarCarroPrecio();
-estadoCarritoSumado();
+
+
 }
 
 function filtrarPorPrecio(price){
@@ -212,4 +205,8 @@ function filtrarPorPrecio(price){
   });
   console.log(librosFiltrados);
   generarCards(librosFiltrados);
+}
+
+function validarInput() {
+  document.getElementById("carro").disabled =! document.getElementById("totalCart").value.length;
 }
