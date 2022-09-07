@@ -152,6 +152,7 @@ deshabilitarBtn();
 
 })
 }
+
 function deshabilitarBtn(){
   for(let libro of libros){
     let idBtnQuitar =`btnQuitar-${libro.id}`;
@@ -221,20 +222,6 @@ function filtrarPorPrecio(price){
   console.log(librosFiltrados);
   generarCards(librosFiltrados);
 }
-
-
-/*function validarInput(){
-let input = document.getElementById("totalCart");
-let button = document.getElementById("carro");
-button.disabled = true;
-input.addEventListener("change", stateHandle);
-function stateHandle() {
-  if (document.getElementById("totalCart").value === "") {
-    button.disabled = true; 
-  } else {
-    button.disabled = false;
-  }
-}}*/
 
 function libroEstaEnCarrito (idLibro) {
   const index = carrito.findIndex(
