@@ -207,6 +207,17 @@ function filtrarPorPrecio(price){
   generarCards(librosFiltrados);
 }
 
-function validarInput() {
-  document.getElementById("carro").disabled =! document.getElementById("totalCart").value.length;
-}
+
+/*function validarInput(){
+let input = document.getElementbyId("totalCart");
+let button = document.getElementbyId("carro");
+button.disabled = true;
+input.addEventListener("change", stateHandle);
+function stateHandle() {
+  if (document.getElementbyId("totalCart").value === "") {
+    button.disabled = true; 
+  } else {
+    button.disabled = false;
+  }
+}}
+*/
