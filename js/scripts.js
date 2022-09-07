@@ -6,7 +6,10 @@ nombre !==""?swal("Hola "+ nombre , "Bienvenido a Gasparinc"):swal("Bienvenido s
 bienvenida();
 
 let libros =[];
- 
+
+const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
+estadoCarrito();
+
 buscarUnProductoEnJson = async () => {
   let response = await fetch('libros.json');
   libros = await response.json();
@@ -16,8 +19,7 @@ buscarUnProductoEnJson = async () => {
  
 buscarUnProductoEnJson();
 
-const carrito =JSON.parse(localStorage.getItem('carrote')) ?? []; 
-estadoCarrito();
+
 
 function sumarAlCarro(idLibro) {
   const index= libros.findIndex(
@@ -28,7 +30,7 @@ function sumarAlCarro(idLibro) {
   if (index!== -1){
     let libroAagregar=libros[index];
     carrito.push(libroAagregar) && actualizarCarro();
-    
+    deshabilitarBtn();
     estadoCarrito();
    
     
@@ -56,17 +58,9 @@ function quitarDelCarro(idLibro) {
     let libroAquitar=libros[index];
 
     carrito.splice(index, 1) && actualizarCarro();  
+    deshabilitarBtn();
    
     
-    
-   /* Toastify({
-
-
-      text: "Quitaste "+ libroAquitar.name,
-      
-      duration: 3000
-      
-      }).showToast();*/
   }  
 }
 
@@ -132,6 +126,7 @@ function actualizarCarro() {
 function generarCards(librosAlistar) {
   document.getElementById("seccion-card").innerHTML="";
 librosAlistar.forEach((libro) => {
+  let idBtnQuitar =`btnQuitar-${libro.id}`;
    document.getElementById("seccion-card").innerHTML += `  <div  class="col mb-4 "><div class="card ">
                             
   <img class="card-img-top" src="./imagenes/${libro.imagen}" alt="..." />
@@ -148,13 +143,33 @@ librosAlistar.forEach((libro) => {
   <div class="card-footer p-4 pt-3 border-top-1 bg-transparent">
       <div class="text-center"><a onclick="sumarAlCarro(${libro.id})" class=" botonIMG btn btn-outline-dark">Agregar al Carrito</a></div>
      <br>
-      <div class="text-center"><a  onclick="advertencia(${libro.id})" class=" botonIMG btn btn-outline-dark ">Quitar del Carrito</a></div>
+      <div class="text-center"><button id="${idBtnQuitar}" onclick="advertencia(${libro.id})"  class=" botonIMG btn btn-outline-dark ">Quitar del Carrito</button></div>
   </div>
   
 </div>       
-</div>`
+</div>`;
+deshabilitarBtn();
+
 })
 }
+function deshabilitarBtn(){
+  for(let libro of libros){
+    let idBtnQuitar =`btnQuitar-${libro.id}`;
+    if(!libroEstaEnCarrito(libro.id)){
+      let btn = document.getElementById(idBtnQuitar);
+      if(!!btn){
+        btn.style.display = "none";
+      }
+    }
+    else{
+      let btn = document.getElementById(idBtnQuitar);
+      if(!!btn){
+        btn.style.display = "";
+      }
+    }
+  }
+}
+
 
 function filtrarPorGenero(genero){
   document.getElementById("seccion-card").innerHTML = "";
@@ -209,15 +224,24 @@ function filtrarPorPrecio(price){
 
 
 /*function validarInput(){
-let input = document.getElementbyId("totalCart");
-let button = document.getElementbyId("carro");
+let input = document.getElementById("totalCart");
+let button = document.getElementById("carro");
 button.disabled = true;
 input.addEventListener("change", stateHandle);
 function stateHandle() {
-  if (document.getElementbyId("totalCart").value === "") {
+  if (document.getElementById("totalCart").value === "") {
     button.disabled = true; 
   } else {
     button.disabled = false;
   }
-}}
-*/
+}}*/
+
+function libroEstaEnCarrito (idLibro) {
+  const index = carrito.findIndex(
+    function (libro) {
+      return libro.id === idLibro;
+  });
+  return index > -1;
+
+
+}
